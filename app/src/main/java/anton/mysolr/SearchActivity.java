@@ -8,7 +8,8 @@ import android.widget.Button;
 
 public class SearchActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button buttonSettings;
+    Button buttonSettings, buttonSearch;
+    SearchActivity metaDataSearch, textSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +17,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_search);
         buttonSettings = (Button) findViewById(R.id.buttonSettings);
         buttonSettings.setOnClickListener(this);
+        buttonSearch = (Button) findViewById(R.id.buttonSearch);
+        buttonSearch.setOnClickListener(this);
     }
 
     @Override
