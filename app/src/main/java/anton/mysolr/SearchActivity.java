@@ -1,5 +1,6 @@
 package anton.mysolr;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +20,12 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
+        switch (v.getId())
+        {
+            case R.id.buttonSettings:
+                startActivity(new Intent(this,SettingsActivity.class));
+                break;
+        }
 
     }
 }
