@@ -46,16 +46,20 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         if (settings.contains(APP_PREFERENCES_CORE_NAME))
             coreNameEditText.setText(settings.getString(APP_PREFERENCES_CORE_NAME,""));
         if (settings.contains(APP_PREFERENCES_PORT))
-            portEditText.setText(settings.getInt(APP_PREFERENCES_PORT,0));
+            portEditText.setText(String.valueOf(settings.getInt(APP_PREFERENCES_PORT,0)));
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         SharedPreferences.Editor editor = settings.edit();
-        editor.putString(APP_PREFERENCES_IP,ipAddressEditText.toString());
-        editor.putString(APP_PREFERENCES_CORE_NAME,coreNameEditText.toString());
-        editor.putInt(APP_PREFERENCES_PORT,Integer.parseInt(portEditText.toString()));
+        editor.putString(APP_PREFERENCES_IP,ipAddressEditText.getText().toString());
+        editor.putString(APP_PREFERENCES_CORE_NAME,coreNameEditText.getText().toString());
+        try {
+            editor.putInt(APP_PREFERENCES_PORT, Integer.parseInt(portEditText.getText().toString()));
+        }
+        catch (NumberFormatException nfe){}
+
         editor.apply();
     }
 
